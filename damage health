@@ -1,0 +1,71 @@
+sing System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Damage : MonoBehaviour
+{
+    public GameObject script;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        script = GetComponent<Health>(). 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+   
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (coll.tag == "Player")
+        {
+            TakeDamage(1);
+            Debug.Log("hit");
+        }
+    }
+
+}
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Health : MonoBehaviour
+{
+    //variable for the game
+    public int maxHealth;       // determines max amount of health the player can have
+    public int currenthealth;   //tracks current health of the player
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        maxHealth= 2;               //set max heath to two
+
+        currenthealth = maxhealth;   //set current health to max health
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void TakeDamage(int amount)
+    {
+        currenthealth -= amount;
+
+        if(currenthealth <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+    }
+
+}
+
+
